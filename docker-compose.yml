@@ -1,0 +1,103 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    depends_on:
+      - db
+      - redis
+    environment:
+      - DEBUG
+      - SECRET_KEY
+      - ALLOWED_HOSTS
+      - CORS_ORIGIN_REGEX_WHITELIST
+      - CSRF_TRUSTED_ORIGINS
+      - DB_ENGINE
+      - DB_HOST
+      - DB_NAME
+      - DB_USER
+      - DB_PASSWORD
+      - DB_PORT
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - AWS_STORAGE_BUCKET_NAME
+      - AWS_S3_REGION_NAME
+      - KEYCLOAK_SERVER_URL
+      - KEYCLOAK_CLIENT_ID
+      - KEYCLOAK_CLIENT_SECRET
+      - KEYCLOAK_REALM
+      - CELERY_BROKER_URL
+      - AWS_SES_ACCESS_KEY_ID
+      - AWS_SES_SECRET_ACCESS_KEY
+      - MAIL_SERVER_URL
+      - MAIL_SENDER_EMAIL
+      - TENANT_DEFAULT_DOMAIN_SUFFIX
+      - TENANT_DEFAULT_DOMAIN_PREFIX
+      - WEBAPP_CUSTOMER_PASSWORD_RESET_CONFIRM_URL
+      - WEBAPP_ADMIN_PASSWORD_RESET_CONFIRM_URL
+      - WEBAPP_CUSTOMER_EMAIL_CHANGE_CONFIRM_URL
+      - WEBAPP_ADMIN_EMAIL_CHANGE_CONFIRM_URL
+      - WEBAPP_VERIFY_EMAIL_URL=/verify-email
+      - GOOGLE_RECAPTCHA_SECRET_KEY
+
+  db:
+    image: postgres:14.1-alpine
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+  redis:
+    image: 'redis:6.2.6-alpine'
+
+  celery:
+    build: .
+    command: celery -A nero worker -l info
+    depends_on:
+      - db
+      - redis
+    environment:
+      - DEBUG
+      - SECRET_KEY
+      - ALLOWED_HOSTS
+      - CORS_ORIGIN_REGEX_WHITELIST
+      - CSRF_TRUSTED_ORIGINS
+      - DB_ENGINE
+      - DB_HOST
+      - DB_NAME
+      - DB_USER
+      - DB_PASSWORD
+      - DB_PORT
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - AWS_STORAGE_BUCKET_NAME
+      - AWS_S3_REGION_NAME
+      - KEYCLOAK_SERVER_URL
+      - KEYCLOAK_CLIENT_ID
+      - KEYCLOAK_CLIENT_SECRET
+      - KEYCLOAK_REALM
+      - CELERY_BROKER_URL
+      - AWS_SES_ACCESS_KEY_ID
+      - AWS_SES_SECRET_ACCESS_KEY
+      - MAIL_SERVER_URL
+      - MAIL_SENDER_EMAIL
+      - TENANT_DEFAULT_DOMAIN_SUFFIX
+      - TENANT_DEFAULT_DOMAIN_PREFIX
+      - WEBAPP_CUSTOMER_PASSWORD_RESET_CONFIRM_URL
+      - WEBAPP_ADMIN_PASSWORD_RESET_CONFIRM_URL
+      - WEBAPP_CUSTOMER_EMAIL_CHANGE_CONFIRM_URL
+      - WEBAPP_ADMIN_EMAIL_CHANGE_CONFIRM_URL
+      - WEBAPP_VERIFY_EMAIL_URL=/verify-email
+      - GOOGLE_RECAPTCHA_SECRET_KEY
+
+volumes:
+  postgres_data:

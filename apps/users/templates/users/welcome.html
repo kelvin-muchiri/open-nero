@@ -1,0 +1,20 @@
+{% autoescape off %}
+
+<p>
+  Hi {{user.first_name}},
+</p>
+
+<p>We would like you to help us serve you better. Here are a few points to have
+  at your fingertips.</p>
+<p>
+  An order item can have any of the following statuses.
+</p>
+<p><strong>Pending</strong>: Your order was placed successfully but is awaiting payment.
+  Upon payment, the due date of an order item will adjust accordingly.
+  The date of payment will be used as the start date.</p>
+<p><strong>In Progress</strong>: We are working on your paper.</p>
+<p><strong>Complete</strong>: Your paper is complete and ready for download.</p>
+<p><strong>Void</strong>: Your order item has been canceled.</p>
+{% endautoescape %}
+<p>Your interaction with {{website}} is highly private and confidential.</p>
+<p>If you have any questions whatsoever, feel free to talk to us at {{contact_email}}</p>

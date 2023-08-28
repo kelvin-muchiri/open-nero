@@ -1,0 +1,19 @@
+{% autoescape off %}
+
+<p>
+  Hi {{user.first_name}},
+</p>
+
+<p>We have received your request to change your email on {{website}}.</p>
+
+<p>If you requested this change, please click the button below to verify your email address. Otherwise,
+  we'll continue using your old email address.
+</p>
+<br>
+{{url}}
+<br>
+<p>
+  If you did not make this request, feel free to ignore this email, or contact us at {{contact_email}}.
+</p>
+
+{% endautoescape %}

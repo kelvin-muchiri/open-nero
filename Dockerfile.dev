@@ -1,0 +1,28 @@
+# pull official base image
+FROM python:3.9.1-alpine
+
+# set work directory
+WORKDIR /usr/src/app
+
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+RUN apk update \
+    # install psycopg2 dependencies
+    && apk add postgresql-dev gcc python3-dev musl-dev \
+    # install python-magic dependencies
+    libmagic \
+    # install paypalrestsdk dependencies
+    libressl-dev libffi-dev \
+    # install Pillow dependencies
+    jpeg-dev zlib-dev libjpeg
+
+# install dependencies
+COPY requirements/common.txt requirements/common.txt
+COPY requirements/dev.txt requirements/dev.txt
+RUN pip install --upgrade pip
+RUN pip install -r requirements/dev.txt --no-cache-dir
+
+# copy project
+COPY . .

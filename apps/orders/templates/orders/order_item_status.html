@@ -1,0 +1,11 @@
+{% autoescape off %}
+
+<p>
+  Hi {{item.order.owner.first_name}},
+</p>
+
+<p>Item <strong>{{item.topic}}</strong> under order number <strong>{{item.order.id}}</strong>
+  has changed to the following status, <strong>{{item.get_status_display}}.</strong>
+</p>
+
+{% endautoescape %}

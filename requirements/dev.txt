@@ -1,0 +1,10 @@
+-r common.txt
+
+black==21.12b0
+flake8==4.0.1
+pre-commit==2.16.0
+pylint==2.12.2
+pylint-django==2.5.0
+coverage==6.2
+pytest-django==4.5.2
+responses==0.21.0

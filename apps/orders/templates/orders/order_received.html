@@ -1,0 +1,85 @@
+{% autoescape off %}
+
+<p>
+  Hi {{order.owner.first_name}},
+</p>
+
+<p>Your order has been placed successfully.</p>
+
+<p>If you haven't paid for your order, please do so that we may start working on your paper.
+  The date and time of payment will be the start date of the due date calculation of all order items.
+</p>
+
+<p>Send instructions/questions and any material we need to tackle your paper(s) effectively to
+  {{contact_email}}.
+</p>
+
+<p><strong>Order number {{order.id}}</strong></p>
+
+<table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:70%;"
+  class="cke_show_border" cellspacing="1" cellpadding="1" border="1" align="left">
+
+  <tr style="border-collapse:collapse;">
+    <td style="padding:5px 10px 5px 0;Margin:0;" width="70%" align="left">
+      <h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;">
+        Topic</h4>
+    </td>
+    <td style="padding:5px 10px 5px 0;Margin:0;" width="10%" align="left">
+      <h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;">
+        Quantity</h4>
+    </td>
+    <td style="padding:5px 10px 5px 0;Margin:0;" width="10%" align="left">
+      <h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;">
+        Unit</h4>
+    </td>
+    <td style="padding:5px 10px 5px 0;Margin:0;" width="10%" align="left">
+      <h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;">
+        Price</h4>
+    </td>
+  </tr>
+
+  {% for item in order.items.all %}
+
+  <tr style="border-collapse:collapse;">
+    <td style="padding:5px 10px 5px 0;Margin:0;" width="70%" align="left">
+      <p>
+        {{item.topic}}
+      </p>
+    </td>
+    <td style="padding:5px 10px 5px 0;Margin:0;" width="10%" align="left">
+      <p>
+        {{item.quantity}}
+      </p>
+    </td>
+    <td style="padding:5px 10px 5px 0;Margin:0;" width="10%" align="left">
+      <p>
+        ${{item.price}}</p>
+    </td>
+    <td style="padding:5px 0;Margin:0;" width="10%" align="left">
+      <p>
+        ${{item.total_price}}
+      </p>
+    </td>
+  </tr>
+
+  <tr style="border-collapse:collapse;">
+    <td width="70%" style="padding:0;Margin:0;">
+      <h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;">
+        TOTAL
+      </h4>
+    </td>
+    <td width="10%" style="padding:0;Margin:0;"></td>
+    <td width="10%" style="padding:0;Margin:0;"></td>
+    <td width="10%" style="padding:0;Margin:0;">
+      <h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;">
+        ${{order.amount_payable}}</h4>
+    </td>
+  </tr>
+
+  {% endfor %}
+
+</table>
+<br>
+
+
+{% endautoescape %}
