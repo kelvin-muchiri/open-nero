@@ -1,0 +1,11 @@
+# ignore everthing
+**
+# allow the following
+!apps
+!nero
+!requirements
+!manage.py
+!run.sh
+# we finally again ignore the following from the folders allowed above
+**/*test
+**/*__pycache__

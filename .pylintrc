@@ -1,0 +1,18 @@
+[MASTER]
+init-hook="from pylint.config import find_pylintrc; import os, sys; sys.path.append(os.path.dirname(find_pylintrc()))"
+
+[MESSAGES CONTROL]
+# disable format Black handles all formatting
+# disable fixme I'm okay with leaving TODO comments
+# disable wrong-import-order since isort handles import ordering
+disable=format,line-too-long,abstract-method,no-member,duplicate-code,no-self-use,missing-docstring,too-many-locals,fixme,wrong-import-order,too-many-ancestors
+
+enable=useless-suppression
+
+[REPORTS]
+reports=no
+
+
+[BASIC]
+good-names=_,i,e,setUp,tearDown,maxDiff
+ignore-patterns=(.)*_test\.py,test_(.)*\.py
