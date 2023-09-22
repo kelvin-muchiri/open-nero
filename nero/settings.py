@@ -283,7 +283,7 @@ AWS_SES_SECRET_ACCESS_KEY = config("AWS_SES_SECRET_ACCESS_KEY", default=None)
 
 AWS_SES_REGION = config("AWS_SES_REGION", default="us-east-1")
 
-MAIL_SERVER_URL = config("MAIL_SERVER_URL", default="http://web:8000/api/v1/")
+MAIL_SERVER_URL = config("MAIL_SERVER_URL", default="http://nero:8000/api/v1/")
 
 MAIL_SENDER_EMAIL = config("MAIL_SENDER_EMAIL", default=None)
 

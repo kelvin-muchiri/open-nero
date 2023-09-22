@@ -106,4 +106,4 @@ If you do not provide `POSTGRES_USER` and `POSTGRES_DB`, you will have to login 
 
 - **MAIL_SERVER_URL**
   - The base URL of the server used to send emails. A sub domain is usually preferred just incase it is black listed, you can quickly set up another
-  - default: http://web:8000/api/v1/
+  - default: http://nero:8000/api/v1/

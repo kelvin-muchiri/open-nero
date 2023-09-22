@@ -1,8 +1,9 @@
 version: '3'
 
 services:
-  web:
+  nero:
     build: .
+    container_name: nero
     depends_on:
       - db
       - redis
@@ -45,6 +46,7 @@ services:
 
   db:
     image: postgres:14.1-alpine
+    container_name: db
     environment:
       - POSTGRES_USER
       - POSTGRES_PASSWORD
@@ -55,9 +57,11 @@ services:
 
   redis:
     image: 'redis:6.2.6-alpine'
+    container_name: redis
 
   celery:
     build: .
+    container_name: celery
     command: celery -A nero worker -l info
     depends_on:
       - db
