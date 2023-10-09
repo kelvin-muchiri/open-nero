@@ -30,9 +30,9 @@ jobs:
       - name: Check running containers
         run: docker ps -a
       - name: Check logs
-        run: docker-compose logs web
+        run: docker-compose logs nero
       - name: Run tests
-        run: docker-compose run --rm web pytest -v --durations=5
+        run: docker-compose run --rm nero pytest -v --durations=5
       - uses: actions/setup-python@v4
         with:
           python-version: '3.9'
